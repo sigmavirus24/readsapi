@@ -1,11 +1,19 @@
 language: python
-python:
-  - "2.6"
-  - "2.7"
-  - "3.3"
-  - "3.4"
-  - "3.5"
+sudo: false
+matrix:
+  include:
+    - python: 2.6
+      env: TOXENV=py26
+    - python: 2.7
+      env: TOXENV=py27
+    - python: 3.3
+      env: TOXENV=py33
+    - python: 3.4
+      env: TOXENV=py34
+    - python: 3.5
+      env: TOXENV=py35
+#    - env: TOXENV=pep8
 # command to install dependencies
-install: "pip install -r requirements.txt"
+install: "pip install tox"
 # command to run tests
-script: nosetests
+script: tox
